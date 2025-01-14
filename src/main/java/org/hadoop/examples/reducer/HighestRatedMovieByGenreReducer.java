@@ -17,7 +17,9 @@ public class HighestRatedMovieByGenreReducer extends Reducer<Text, Text, Text, T
             String val = value.toString();
             if (val.startsWith("RATING:")) {
                 String[] parts = val.substring(7).split(":");
-                movieRatings.put(parts[0], Float.parseFloat(parts[1]));
+                if (parts.length == 2) { // Ensure there are exactly 2 parts
+                    movieRatings.put(parts[0], Float.parseFloat(parts[1]));
+                }
             }
         }
 
