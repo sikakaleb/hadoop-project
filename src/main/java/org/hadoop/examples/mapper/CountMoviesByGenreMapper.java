@@ -12,7 +12,12 @@ public class CountMoviesByGenreMapper extends Mapper<Object, Text, Text, IntWrit
 
     @Override
     protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-        String[] columns = value.toString().split(",");
+        String line = value.toString();
+        // Ignore header or invalid lines
+        if (line.startsWith("movieId") || line.isEmpty()) {
+            return;
+        }
+        String[] columns = line.split(",");
         if (columns.length < 3) return; // Skip malformed lines
         String[] genres = columns[2].split("\\|");
         for (String g : genres) {

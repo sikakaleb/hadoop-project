@@ -12,7 +12,12 @@ public class MoviesByGenreMapper extends Mapper<LongWritable, Text, Text, Text> 
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String[] fields = value.toString().split(",");
+        String line = value.toString();
+        // Ignore header or invalid lines
+        if (line.startsWith("movieId") || line.isEmpty()) {
+            return;
+        }
+        String[] fields = line.split(",");
         if (fields.length > 2) {
             String title = fields[1];
             String[] genres = fields[2].split("\\|");
@@ -26,4 +31,3 @@ public class MoviesByGenreMapper extends Mapper<LongWritable, Text, Text, Text> 
         }
     }
 }
-

@@ -13,7 +13,12 @@ public class AvgRatingByMovieMapper extends Mapper<LongWritable, Text, Text, Flo
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String[] fields = value.toString().split(",");
+        String line = value.toString();
+        // Ignore header or invalid lines
+        if (line.startsWith("userId") || line.isEmpty()) {
+            return;
+        }
+        String[] fields = line.split(",");
         if (fields.length > 2) {
             movieID.set(fields[1]);
             rating.set(Float.parseFloat(fields[2]));
@@ -21,4 +26,3 @@ public class AvgRatingByMovieMapper extends Mapper<LongWritable, Text, Text, Flo
         }
     }
 }
-
