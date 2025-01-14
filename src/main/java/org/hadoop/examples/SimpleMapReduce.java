@@ -7,6 +7,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.hadoop.examples.mapper.SimpleMapper;
+import org.hadoop.examples.reducer.SimpleReducer;
 
 public class SimpleMapReduce {
     public static void main(String[] args) throws Exception {

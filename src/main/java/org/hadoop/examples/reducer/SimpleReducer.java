@@ -1,4 +1,4 @@
-package org.hadoop.examples;
+package org.hadoop.examples.reducer;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;

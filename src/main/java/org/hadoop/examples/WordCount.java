@@ -7,6 +7,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.hadoop.examples.mapper.WordCountMapper;
+import org.hadoop.examples.reducer.WordCountReducer;
 
 public class WordCount {
     public static void main(String[] args) throws Exception {
