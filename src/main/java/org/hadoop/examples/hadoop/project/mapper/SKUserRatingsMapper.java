@@ -13,14 +13,16 @@ public class SKUserRatingsMapper extends Mapper<LongWritable, Text, Text, Text> 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String line = value.toString();
-        // Ignorer les lignes d'entête ou les lignes vides
-        if (line.startsWith("userId") || line.isEmpty()) {
+        // Ignorer les lignes vides
+        if (line.isEmpty()) {
             return;
         }
-        String[] fields = line.split(",");
+
+        // Split par tabulation
+        String[] fields = line.split("\t");
         if (fields.length >= 2) {
-            movieId.set(fields[1]);
-            userInfo.set("USER:" + fields[0]);
+            movieId.set(fields[1].split(" ")[0]); // Récupérer seulement le movieId
+            userInfo.set("USER:" + fields[0]);    // Récupérer le userId
             context.write(movieId, userInfo);
         }
     }

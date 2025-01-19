@@ -12,8 +12,10 @@ public class SKMoviesJoinReducer extends Reducer<Text, Text, Text, Text> {
     protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         String movieTitle = null;
         List<String> userIds = new ArrayList<>();
+        System.out.println("Reducer Key: " + key.toString());
 
         for (Text value : values) {
+            System.out.println("Reducer Value: " + value.toString());
             String val = value.toString();
             if (val.startsWith("MOVIE:")) {
                 movieTitle = val.substring(6); // Récupérer le titre du film
