@@ -1,4 +1,4 @@
-# **Rapport détaillé sur le traitement et l’évolution du projet Hadoop**
+# **Rapport détaillé l’évolution du projet Hadoop**
 
 ---
 
@@ -85,7 +85,7 @@ Identifier le `movieId` ayant obtenu la note maximale pour chaque utilisateur.
 99986   2395 (Rating: 5.0)
 99987   1 (Rating: 5.0)
 ```
-
+![Capture d’écran 2025-01-19 042444.jpg](capture/Capture%20d%E2%80%99%C3%A9cran%202025-01-19%20042444.jpg)
 ---
 
 ## **2ème étape : Jointure pour obtenir les titres des films**
@@ -111,13 +111,16 @@ Associer les titres des films à chaque utilisateur ayant donné une note maxima
 #### **Commandes**
 1. **Charger les fichiers dans HDFS :**
    ```bash
-   hdfs dfs -put /path/to/movies.csv /input_ml25m/movies.csv
+   hdfs dfs -put /tmp/movies.csv /input_ml25m/movies.csv
    hdfs dfs -put /output_highest_rated_movie_user /input/user_ratings.csv
    ```
+   ![Capture d’écran 2025-01-19 042603.jpg](capture/Capture%20d%E2%80%99%C3%A9cran%202025-01-19%20042603.jpg)
+   ![Capture d’écran 2025-01-19 042507.jpg](capture/Capture%20d%E2%80%99%C3%A9cran%202025-01-19%20042507.jpg)
 2. **Exécuter le job :**
    ```bash
    hadoop jar /tmp/hadoop-first-code-1.0-SNAPSHOT.jar org.hadoop.examples.hadoop.project.driver.SKMoviesJoinDriver /input_ml25m/movies.csv /input/user_ratings.csv /output_movies_user_likes
    ```
+   ![Capture d’écran 2025-01-19 043717.jpg](capture/Capture%20d%E2%80%99%C3%A9cran%202025-01-19%20043717.jpg)
 3. **Résultats :**
    ```bash
    hdfs dfs -cat /output_movies_user_likes/part-*
@@ -128,7 +131,7 @@ Associer les titres des films à chaque utilisateur ayant donné une note maxima
 64695   Last Man Standing (1996)
 8802    It's Such a Beautiful Day (2012)
 ```
-
+![Capture d’écran 2025-01-19 050740.jpg](capture/Capture%20d%E2%80%99%C3%A9cran%202025-01-19%20050740.jpg)
 ---
 
 ## **3ème étape : Compter le nombre d’utilisateurs par film**
@@ -161,7 +164,7 @@ Compter combien d’utilisateurs ont aimé chaque film.
 Zero Effect (1998)      4
 Zootopia (2016)         29
 ```
-
+![Capture d’écran 2025-01-19 051549.jpg](capture/Capture%20d%E2%80%99%C3%A9cran%202025-01-19%20051549.jpg)
 ---
 
 ## **4ème étape : Grouper les films par nombre d’utilisateurs**
@@ -194,7 +197,7 @@ Grouper les films par le nombre d’utilisateurs qui les ont aimés.
 4    Zero Effect (1998), Zulu (1964)
 29   Zootopia (2016)
 ```
-
+![Capture d’écran 2025-01-19 052226.jpg](capture/Capture%20d%E2%80%99%C3%A9cran%202025-01-19%20052226.jpg)
 ---
 
 ## **Analyse et perspectives**
@@ -209,15 +212,9 @@ Grouper les films par le nombre d’utilisateurs qui les ont aimés.
 3. **Résultats vides :**
     - Analyse approfondie des Reducers pour détecter les erreurs logiques.
 
-### **Améliorations possibles**
-- **Automatisation :**
-  Écrire un script pour enchaîner automatiquement les étapes.
-- **Optimisation des performances :**
-  Ajuster la parallélisation des tâches et réduire les tailles intermédiaires.
-
 ---
 
 ## **Conclusion**
 Le projet a permis d’explorer les concepts clés de MapReduce et d’Hadoop à travers des questions avancées, notamment des jointures et des regroupements complexes. Les résultats obtenus répondent avec succès aux objectifs.
 
-Voulez-vous des illustrations pour compléter ce rapport ?
+![img.png](capture/img.png)
