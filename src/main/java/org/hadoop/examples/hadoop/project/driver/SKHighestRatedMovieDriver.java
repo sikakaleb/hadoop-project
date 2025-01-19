@@ -1,4 +1,5 @@
 package org.hadoop.examples.hadoop.project.driver;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -16,7 +17,7 @@ public class SKHighestRatedMovieDriver {
         }
 
         Configuration conf = new Configuration();
-        Job job = Job.getInstance(conf, "Find Highest Rated Movie Per User");
+        Job job = Job.getInstance(conf, "Find Highest Rated Movie by User");
 
         job.setJarByClass(SKHighestRatedMovieDriver.class);
         job.setMapperClass(SKHighestRatedMovieMapper.class);
