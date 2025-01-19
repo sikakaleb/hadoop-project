@@ -1,6 +1,7 @@
 ### **Rapport détaillé du TD : Hadoop et le traitement de données distribuées**
 
 ---
+docker cp target/hadoop-first-code-1.0-SNAPSHOT.jar namenode:/tmp/
 
 ### **1. Objectifs du TD**
 
